@@ -1,0 +1,15 @@
+.nav-container{
+    @apply w-screen bg-light-200 border-b border-b-[#7a7a7a] fixed z-10 flex justify-center;
+}
+
+.nav-container__nav{
+    @apply flex justify-between items-center px-12 py-4 w-full max-w-[1920px];
+}
+
+.nav-container__nav--content-div{
+    @apply flex items-center space-x-5;
+}
+
+.nav__content-div--heading{
+    @apply font-secondary px-8 py-3 border border-blue-300 text-[#656565] bg-blue-100;
+}
