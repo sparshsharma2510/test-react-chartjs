@@ -1,0 +1,11 @@
+.dashboard-wrapper{
+    @apply flex justify-center w-full h-screen bg-light-200;
+}
+
+.dashboard-wrapper__dashboard{
+    @apply w-full max-w-[1920px] pt-28 flex flex-col space-y-20 self-start justify-end px-16;
+}
+
+.dashboard-wrapper__dashboard--create-view-btn{
+    @apply self-end px-8 py-2 font-medium text-white bg-blue-500 rounded-3xl;
+}

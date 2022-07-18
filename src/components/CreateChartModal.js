@@ -7,36 +7,46 @@ export default function CreateChartModal({showModal, setShowModal, setChartData,
     const [currentStep, setCurrentStep] = useState(1);
     const [inputFieldData, setInputFieldData] = useState([{temperature: undefined, time: undefined}]);
     const [selectedChart, setSelectedChart] = useState(undefined);
-
+    
+    //Function to handle the temperature input changes
     const handleTemperatureChange = (e,index) => {
         setInputFieldData((prevState)=>{
+            //Fetch the prevState values
             const newState = [...prevState];
+            //Update the prevState with the newly entered temperature value
+            //if undefined then replace with -32
             newState[index].temperature = e.target.value? Number(e.target.value):-32;
             return newState;
         });
     }
 
+    //Function to handle the time input changes
     const handleTimeChange = (e,index) => {
         setInputFieldData((prevState)=>{
             const newState = [...prevState];
-            newState[index].time = e.target.value? Number(e.target.value):-32;
+            //Update the prevState with the newly entered time value
+            //if undefined then replace with 0
+            newState[index].time = e.target.value? Number(e.target.value):0;
             return newState;
         });
     }
-
+    //Function to handle the additon of data
+    //Currently constrained to add 8 input fields only
     const handleAdditionOfData = () => {
+        //Check if already reached the limit of input fields
         if(inputFieldData.length === 8){
             alert("Reached the max limit of 8 data fields");
             return;
         }  
+        //Else add the new input field into the state
         setInputFieldData((prevState)=>{
             return [...prevState, {temperature: undefined, time: undefined}];
         })
     }
-
+    //Function to handle the submmission of form
     const handleFormSubmission = (e) => {
         e.preventDefault();
-        /* Pass the data values up to dashboard states */
+        /* Pass the user data values up to dashboard states */
         setChartData(inputFieldData);
         setCurrentSelection(selectedChart);
         /* Flush the data values locally */
@@ -44,11 +54,12 @@ export default function CreateChartModal({showModal, setShowModal, setChartData,
         setInputFieldData([{temperature: undefined, time: undefined}]);
     }
 
+    //Map out all the data input fields on the screen
     const inputFields = inputFieldData.map((item, index)=>{
         return(
             <div key={index} className='flex w-full mt-3 space-x-5'>
-                <input required onChange={(e)=> handleTemperatureChange(e,index)} type={"number"} className="w-full px-4 py-2 rounded-lg outline-none text-light-200 bg-dark-100 font-secondary" placeholder="Enter temperature (in °C)" min={-32} max={54} step={0.1}/>
-                <input required onChange={(e)=> handleTimeChange(e,index)} type={"number"} className="w-full px-4 py-2 rounded-lg outline-none text-light-200 bg-dark-100 font-secondary" placeholder="Enter time (in Hours)" min={0} max={2400} step={1}/>
+                <input required onChange={(e)=> handleTemperatureChange(e,index)} type={"number"} className="w-full px-4 py-2 rounded-lg outline-none text-light-200 bg-dark-100 font-secondary" placeholder="Enter temp. (e.g. 28)" min={-32} max={54} step={0.1}/>
+                <input required onChange={(e)=> handleTimeChange(e,index)} type={"number"} className="w-full px-4 py-2 rounded-lg outline-none text-light-200 bg-dark-100 font-secondary" placeholder="Enter time (e.g. 1500)" min={0} max={2400} step={1}/>
             </div>
         );
     });
@@ -70,7 +81,7 @@ export default function CreateChartModal({showModal, setShowModal, setChartData,
                 </Transition.Child>
 
                 <div className="fixed inset-0 z-10 overflow-y-auto">
-                    <div className="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+                    <div className="flex items-center justify-center min-h-full p-4 text-center sm:p-0">
                         <Transition.Child
                             as={Fragment}
                             enter="ease-out duration-300"

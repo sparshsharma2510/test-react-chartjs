@@ -69,7 +69,7 @@ export default function VisualGraph({currentSelection, chartData}){
             }
         ],
     };
-
+    //Based on the user selection render the Graphs
     switch(currentSelection){
         case 1:{
             return <Bar options={options} data={data}/>;
