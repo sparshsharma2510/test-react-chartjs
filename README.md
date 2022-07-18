@@ -18,6 +18,8 @@ Follow the following steps to get started with local development:
 
 -   Clone the forked repo to your local system using `git clone https://github.com/<your-username>/Durbin_Relevel`
 
+- Update your pwd to the cloned repo `cd Durbin_Relevel`
+
 -   Connect your local repo to the upstream using `git remote add upstream https://github.com/sparshsharma2510/Durbin_Relevel`
 
 -   Run `npm install` to install npm dependencies
