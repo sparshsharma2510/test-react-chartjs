@@ -2,6 +2,9 @@
 
 This is a Frontend web application where a user can enter some data values and see them get visualized on the dashboard. This task was assigned from Durbin (Relevel placement process).
 
+<img src = "public/app_preivew_1.jpg"/>
+<img src = "public/app_preivew_2.jpg"/>
+
 ## Tech Used
 
 <p align="left">
