@@ -28,6 +28,10 @@ export default function VisualGraph({currentSelection, chartData}){
 
     const options = {
         responsive: true,
+        // interaction: {
+        //     mode: 'index',
+        //     intersect: false,
+        // },
         plugins: {
             legend: {
                 position: 'top',
@@ -42,16 +46,17 @@ export default function VisualGraph({currentSelection, chartData}){
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'Temperature (in °C)',
-                    labelString: 'X axis Title'
+                    text: 'ROI (in US$)',
                 }
             },
             x: {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'Time (in Hours Format)'
-                }
+                    text: 'Year of investing'
+                },
+                categoryPercentage: 1.0,
+                barPercentage: 1.0
             }
         },
     };
@@ -62,10 +67,16 @@ export default function VisualGraph({currentSelection, chartData}){
         labels,
         datasets: [
             {
-                label: 'Temperature (in °C)',
+                label: 'Instagram',
                 data: propsData.map((item) => item.temperature),
                 borderColor: 'rgb(255, 99, 132)',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            },
+            {
+                label: 'Google Ads',
+                data: propsData.map((item) => item.temperature - (Math.random()*15)),
+                borderColor: 'rgb(53, 162, 235)',
+                backgroundColor: 'rgba(53, 162, 235, 0.5)',
             }
         ],
     };

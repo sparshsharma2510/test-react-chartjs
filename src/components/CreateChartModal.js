@@ -9,7 +9,7 @@ export default function CreateChartModal({showModal, setShowModal, setChartData,
     const [selectedChart, setSelectedChart] = useState(undefined);
     
     //Function to handle the temperature input changes
-    const handleTemperatureChange = (e,index) => {
+    const handleCostChange = (e,index) => {
         setInputFieldData((prevState)=>{
             //Fetch the prevState values
             const newState = [...prevState];
@@ -21,7 +21,7 @@ export default function CreateChartModal({showModal, setShowModal, setChartData,
     }
 
     //Function to handle the time input changes
-    const handleTimeChange = (e,index) => {
+    const handleYearChange = (e,index) => {
         setInputFieldData((prevState)=>{
             const newState = [...prevState];
             //Update the prevState with the newly entered time value
@@ -58,8 +58,8 @@ export default function CreateChartModal({showModal, setShowModal, setChartData,
     const inputFields = inputFieldData.map((item, index)=>{
         return(
             <div key={index} className='flex w-full mt-3 space-x-5'>
-                <input required onChange={(e)=> handleTemperatureChange(e,index)} type={"number"} className="w-full px-4 py-2 rounded-lg outline-none text-light-200 bg-dark-100 font-secondary" placeholder="Enter temp. (e.g. 28)" min={-32} max={54} step={0.1}/>
-                <input required onChange={(e)=> handleTimeChange(e,index)} type={"number"} className="w-full px-4 py-2 rounded-lg outline-none text-light-200 bg-dark-100 font-secondary" placeholder="Enter time (e.g. 1500)" min={0} max={2400} step={1}/>
+                <input required onChange={(e)=> handleCostChange(e,index)} type={"number"} className="w-full px-4 py-2 rounded-lg outline-none text-light-200 bg-dark-100 font-secondary" placeholder="Enter ROI"/>
+                <input required onChange={(e)=> handleYearChange(e,index)} type={"number"} className="w-full px-4 py-2 rounded-lg outline-none text-light-200 bg-dark-100 font-secondary" placeholder="Enter Year"/>
             </div>
         );
     });
@@ -116,8 +116,8 @@ export default function CreateChartModal({showModal, setShowModal, setChartData,
                                                     // Else serve data fields
                                                     <div className='flex-col w-full'>
                                                         <div className='flex justify-between w-full'>
-                                                            <span>Enter Temperature(°C)</span>
-                                                            <span>Enter Time(in Hours Format)</span>
+                                                            <span>Enter ROI(in US$)</span>
+                                                            <span>Enter Year of investing</span>
                                                         </div>
                                                         {inputFields}
                                                         <button 
